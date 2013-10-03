@@ -5,6 +5,7 @@ def Calc_KG(pounds):# Calculates weight in kgs from pounds
 def Calc_CM(inch):# returns length in cm from inches
 	return inch/0.39370
 
+
 def Calc_M3(count,length,width,height): # calculates cubic meters using inches as inputs
 	return Calc_CFT(count,length,width,height)/35.315
 def WhichContainer(size):# returns the containers that can contain the cubic meter
@@ -23,6 +24,12 @@ def isTooLong(length,Container):#if the length won't fit into container, returns
 		return False
 	else:
 		return True
+def isTooWide(Width,Container):#if the length won't fit into container, returns FALSE
+
+	if Width > Container['Width']:
+		return False
+	else:
+		return True
 
 def isTooHigh(Height,Container):#if the Height won't fit into container, returns FALSE
 
@@ -30,7 +37,6 @@ def isTooHigh(Height,Container):#if the Height won't fit into container, returns
 		return False
 	else:
 		return True
-		
 def isTooMuch(CBM,Container):#if the M3 won't fit into container, returns FALSE
 
 	if CBM > Container['Capacity']:
@@ -42,7 +48,8 @@ def isTooMuch(CBM,Container):#if the M3 won't fit into container, returns FALSE
 FortyFootGP = {'Name':"40' Standard" ,'Length':473, 'Width':92, 'Height':94,'DoorWidth':92,'DoorHeight':90,'Capacity':76.28} #inside and outside dimension in inches for 40' cnt
 FortyFootHC = {'Name':"40' High Cube",'Length':473, 'Width':92, 'Height':107,'DoorWidth':92,'DoorHeight':101,'Capacity':76.28} #inside and outside dimension in inches for 40' high cube
 TwentyFootGP = {'Name':"20' Standard",'Length':232, 'Width':92, 'Height':94,'DoorWidth':92,'DoorHeight':90,'Capacity':33.18} #inside and outside dimension in inches for 20'
- 
+UserMadeCNT = {'Name':"User Created",'Length':0, 'Width':0, 'Height':0,'DoorWidth':0,'DoorHeight':0,'Capacity': Calc_M3(1,UserMadeCNT['Length'],UserMadeCNT['Width'],UserMadeCNT['Height']) }
+
 ListOfCnt =  {'TwentyFootGP':TwentyFootGP, 'FortyFootGP':FortyFootGP, 'FortyFootHC':FortyFootHC } 	 
 
 
