@@ -4,6 +4,11 @@ def Calc_KG(pounds):# Calculates weight in kgs from pounds
 	return pounds * 0.45359237
 def Calc_CM(inch):# returns length in cm from inches
 	return inch/0.39370
+def Calc_CM(inch):# returns length in cm from inches
+	return inch/0.39370
+def Calc_IN(cm): #calculates inches from centimeters
+	return cm/2.54
+
 
 
 def Calc_M3(count,length,width,height): # calculates cubic meters using inches as inputs
