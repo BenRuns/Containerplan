@@ -5,7 +5,7 @@ def Calc_KG(pounds):# Calculates weight in kgs from pounds
 def Calc_CM(inch):# returns length in cm from inches
 	return inch/0.39370
 
-def Calc_M3(count,length,width,height): # calculates cubic meters usd
+def Calc_M3(count,length,width,height): # calculates cubic meters using inches as inputs
 	return Calc_CFT(count,length,width,height)/35.315
 def WhichContainer(size):# returns the containers that can contain the cubic meter
 	CNTS = []
