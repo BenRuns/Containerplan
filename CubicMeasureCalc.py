@@ -1,5 +1,9 @@
 def Calc_CFT(count,length,width,height):# calculate cubic feet using inches as inputs
 	return ((1.0 * count) * length * width * height)/17280 
+def Calc_KG(pounds):# Calculates weight in kgs from pounds
+	return weight * 0.45359237
+def Calc_CM(inch):# returns length in cm from inches
+	return inch/0.39370
 
 def Calc_M3(count,length,width,height): # calculates cubic meters usd
 	return Calc_CFT(count,length,width,height)/35.315
