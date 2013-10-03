@@ -31,6 +31,13 @@ def isTooHigh(Height,Container):#if the Height won't fit into container, returns
 	else:
 		return True
 		
+def isTooMuch(CBM,Container):#if the M3 won't fit into container, returns FALSE
+
+	if CBM > Container['Capacity']:
+		return False
+	else:
+		return True
+		
 
 FortyFootGP = {'Name':"40' Standard" ,'Length':473, 'Width':92, 'Height':94,'DoorWidth':92,'DoorHeight':90,'Capacity':76.28} #inside and outside dimension in inches for 40' cnt
 FortyFootHC = {'Name':"40' High Cube",'Length':473, 'Width':92, 'Height':107,'DoorWidth':92,'DoorHeight':101,'Capacity':76.28} #inside and outside dimension in inches for 40' high cube
