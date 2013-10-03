@@ -7,7 +7,7 @@ def Calc_CM(inch):# returns length in cm from inches
 
 
 def Calc_M3(count,length,width,height): # calculates cubic meters using inches as inputs
-	return Calc_CFT(count,length,width,height)/35.315
+	return (count * Calc_CM(length)*Calc_CM(width)*Calc_CM(height))/10**6
 def WhichContainer(size):# returns the containers that can contain the cubic meter
 	CNTS = []
 	for a in ListOfCnt:
