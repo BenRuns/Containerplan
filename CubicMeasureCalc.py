@@ -48,7 +48,7 @@ def isTooMuch(CBM,Container):#if the M3 won't fit into container, returns FALSE
 FortyFootGP = {'Name':"40' Standard" ,'Length':473, 'Width':92, 'Height':94,'DoorWidth':92,'DoorHeight':90,'Capacity':76.28} #inside and outside dimension in inches for 40' cnt
 FortyFootHC = {'Name':"40' High Cube",'Length':473, 'Width':92, 'Height':107,'DoorWidth':92,'DoorHeight':101,'Capacity':76.28} #inside and outside dimension in inches for 40' high cube
 TwentyFootGP = {'Name':"20' Standard",'Length':232, 'Width':92, 'Height':94,'DoorWidth':92,'DoorHeight':90,'Capacity':33.18} #inside and outside dimension in inches for 20'
-UserMadeCNT = {'Name':"User Created",'Length':0, 'Width':0, 'Height':0,'DoorWidth':0,'DoorHeight':0,'Capacity': Calc_M3(1,UserMadeCNT['Length'],UserMadeCNT['Width'],UserMadeCNT['Height']) }
+UserMadeCNT = {'Name':"User Created",'Length':0, 'Width':0, 'Height':0,'DoorWidth':0,'DoorHeight':0,'Capacity': Calc_M3(1,UserMadeCNT['Length'],UserMadeCNT['Width'],UserMadeCNT['Height']) }#offers  template for creating your own container
 
 ListOfCnt =  {'TwentyFootGP':TwentyFootGP, 'FortyFootGP':FortyFootGP, 'FortyFootHC':FortyFootHC } 	 
 
