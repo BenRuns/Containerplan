@@ -1,0 +1,15 @@
+
+body {
+	background: url(/imgs/lblue110.gif);
+	background-repeat: repeat; }
+
+fieldset {background-color: white;}
+
+input, textarea, button {
+  width : 75px;
+  margin: 0;
+
+  -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+     -moz-box-sizing: border-box; /* For all Gecko based browsers */
+          box-sizing: border-box;
+}
