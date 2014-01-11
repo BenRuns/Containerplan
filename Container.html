@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="/css/normalize.css" type="text/css" media="screen">
+<link rel="stylesheet" href="/css/grid.css" type="text/css" media="screen">
+<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen">
+
+<title> Freight Calculator </title>
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="container clearfix">
+	<pre class="grid_5" align="left">
+	<h1>Ben's Freight Calculator</h1>
+	<A HREF="mailto:Benthomaspatterson@gmail.com?subject=Regarding the freight calculator website">Contact me!</A>
+		
+	</pre>
+	
+	<pre class="grid_5">
+	Hello and Welcome! I'll be 
+	expanding this as I continue 
+	to study programming and web
+	design. Please come back
+	and check this out later. 
+
+	This works best in google 
+	chrome.
+
+	</pre>
+
+
+	<div class="grid_12">
+	<fieldset>
+
+	<table cellpadding="10px">
+
+		<tr>
+		
+		<form method="post" >
+		<td>
+			<div>
+			<label for="pcs">Piece(s)</label>
+			<br>
+			</div>
+			
+
+			<input type="number" name ="pcs" id="pcs" value={{pcs}} >
+
+		</td>
+		<td>
+			<label for="length">Length</label>
+			<br>
+			<input type="number" step="any" id ="length" name ="length" value={{length}}>
+		</td>
+		<td>
+			<label for="width">Width</label>
+			<br>
+			<input type="number" step="any" name ="width" id="height" value ={{width}}>
+		</td>
+		<td>
+			<label for "height">Height</label>
+			<br>
+			<input type="number" step="any" name ="height" id="height" value={{height}}>
+
+		</td>
+		<td>
+			<label for="measure">Unit of Measure</label>
+			<br>
+			<select  name="measure">
+			
+			{% for value in ["", "CM", "IN"]%}
+				{% if value == sel_measure %}
+					<option value={{value}} selected>{{value}}</option>
+				{%else%}
+					<option value= {{value}}>{{value}}</option>
+				{%endif%}
+			{%endfor%}
+
+			
+
+			</select>
+
+
+		</td>
+		
+
+		
+
+		<td>
+			<label for="weight">Total Weight</label>
+			<br>
+			<input type="number" step="any" name ="weight" value={{weight}}>
+
+		</td>
+		<td>
+
+			<label for="Weight_Type" > Kilograms/Pounds</label>
+			<br>
+			<select name="Weight_Type" id="Weight_Type">
+				
+			{% for value in ["", "KG", "LB"]%}
+				{% if value == sel_weight  %}
+					<option value={{value}} selected>{{value}}</option>
+				{%else%}
+					<option value= {{value}}> {{value}}</option>
+				{%endif%}
+			{%endfor%}
+
+
+			</select>
+		</td>
+		<td>
+			<label for="hazardous">Hazardous?</label><!---a link to how to tell if freight is hazardous should be here-->
+			<br>
+			<select name="hazardous" id ="hazardous">
+				
+			{% for value in ["", "HAZARDOUS", "NON-HAZARDOUS"]%}
+				{% if value == sel_haz  %}
+					<option value={{value}} selected>{{value}}</option>
+				{%else%}
+					<option value= {{value}}>{{value}}</option>
+				{%endif%}
+			{%endfor%}
+
+
+			</select>
+		<td>	
+		
+		
+		<tr>
+		<td>
+			<button type ="submit">Submit</button>
+		</td>
+		</tr>
+		</form>
+
+	</table>
+	</fieldset>
+
+	<br>
+	<br>
+	<fieldset>
+		<table id="output"  cellpadding=10px border ="0">
+
+		<td>{{M3}} </td><td>{{CFT}} </td> <tr><td>{{weightkg}} </td> <td>{{weightlb}} </td></tr>
+		<tr>
+		<div style="color:red;">{{error_message}}</div>
+	
+		</tr>
+		</table>
+	</fieldset>
+	</tr>
+	
+	</div>
+
+</div>
+
+</body>
+
+</html>
