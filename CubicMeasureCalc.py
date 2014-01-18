@@ -50,7 +50,7 @@ def isTooMuch(CBM,Container):#if the M3 won't fit into container, returns FALSE
 		return True
 		
 def CreatCNT((Name,Length,Width,Height,DoorWidth,DoorHeight)):# creates a container using inches as inputs
-	return {'Name':Name,'Length':Length, 'Width':Width, 'Height':Height,'DoorWidth':DoorWidth,'DoorHeight':DoorHeight,'Capacity': Calc_M3(1,Length,Width,Height}
+	return {'Name':Name,'Length':Length, 'Width':Width, 'Height':Height,'DoorWidth':DoorWidth,'DoorHeight':DoorHeight,'Capacity': Calc_M3(1,Length,Width,Height)}
 		
 		
 
