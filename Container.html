@@ -16,24 +16,43 @@
 <body>
 
 
-<div class="container clearfix">
-	<pre class="grid_5" align="left">
-	<h1>Ben's Freight Calculator</h1>
+<div class="container clearfix" >
+
+	<div class="grid_5" align="center">
+	<h2><i>Ben's Freight Calculator</i></h2>
 	<A HREF="mailto:Benthomaspatterson@gmail.com?subject=Regarding the freight calculator website">Contact me!</A>
 		
-	</pre>
+	</div>
 	
-	<pre class="grid_5">
-	Hello and Welcome! I'll be 
-	expanding this as I continue 
-	to study programming and web
-	design. Please come back
-	and check this out later. 
+	<br>
+	<div class="grid_5 intro">
 
-	This works best in google 
-	chrome.
+  I'll be 
+  expanding this as I continue 
+  to study programming, web
+  design and, web development. Please come back
+  and check this out later. 
 
-	</pre>
+
+</div>
+	
+		<br>
+	<br>
+
+	<br>
+	<br>
+
+	<br>
+	<br>
+		<br>
+	<br>
+
+	<br>
+	<br>
+
+	<br>
+	<br>
+
 
 
 	<div class="grid_12">
@@ -41,38 +60,50 @@
 
 	<table cellpadding="10px">
 
-		<tr>
+
+		<thead>
 		
-		<form method="post" >
+		<th>Piece(s)</th>
+		<th>Length</th>
+		<th>Width</th>
+		<th>Height</th>
+		<th>Unit of Measure</th>
+		<th>Total Weight</th<!---need to add an option by piece -->
+		<th> Kilograms/Pounds</th>
+		<th>Hazardous?</th><!---a link to how to tell if freight is hazardous should be here-->
+		</thead>
+			
+			
+
+			
+		<tr>
+			
+
 		<td>
-			<div>
-			<label for="pcs">Piece(s)</label>
-			<br>
-			</div>
+		<form method="post" >
+
+
 			
 
 			<input type="number" name ="pcs" id="pcs" value={{pcs}} >
 
 		</td>
 		<td>
-			<label for="length">Length</label>
-			<br>
+			
+			
 			<input type="number" step="any" id ="length" name ="length" value={{length}}>
 		</td>
 		<td>
-			<label for="width">Width</label>
-			<br>
+
 			<input type="number" step="any" name ="width" id="height" value ={{width}}>
 		</td>
 		<td>
-			<label for "height">Height</label>
-			<br>
 			<input type="number" step="any" name ="height" id="height" value={{height}}>
 
 		</td>
 		<td>
-			<label for="measure">Unit of Measure</label>
-			<br>
+			
+			
 			<select  name="measure">
 			
 			{% for value in ["", "CM", "IN"]%}
@@ -89,20 +120,19 @@
 
 
 		</td>
+
 		
 
 		
 
 		<td>
-			<label for="weight">Total Weight</label>
-			<br>
+
 			<input type="number" step="any" name ="weight" value={{weight}}>
 
 		</td>
 		<td>
 
-			<label for="Weight_Type" > Kilograms/Pounds</label>
-			<br>
+
 			<select name="Weight_Type" id="Weight_Type">
 				
 			{% for value in ["", "KG", "LB"]%}
@@ -117,8 +147,7 @@
 			</select>
 		</td>
 		<td>
-			<label for="hazardous">Hazardous?</label><!---a link to how to tell if freight is hazardous should be here-->
-			<br>
+
 			<select name="hazardous" id ="hazardous">
 				
 			{% for value in ["", "HAZARDOUS", "NON-HAZARDOUS"]%}
@@ -136,7 +165,7 @@
 		
 		<tr>
 		<td>
-			<button type ="submit">Submit</button>
+			<button type ="submit">Submit</button><!---need to add an add line buttone -->
 		</td>
 		</tr>
 		</form>
@@ -146,10 +175,16 @@
 
 	<br>
 	<br>
+
+	<br>
+	<br>
+
+	<br>
+	<br>
 	<fieldset>
 		<table id="output"  cellpadding=10px border ="0">
 
-		<td>{{M3}} </td><td>{{CFT}} </td> <tr><td>{{weightkg}} </td> <td>{{weightlb}} </td></tr>
+		<td>{{M3}} </td><td>{{CFT}} </td> <td>{{dim}} <tr><td>{{weightkg}} </td> <td>{{weightlb}} </td></tr>
 		<tr>
 		<div style="color:red;">{{error_message}}</div>
 	
@@ -165,3 +200,5 @@
 </body>
 
 </html>
+
+
