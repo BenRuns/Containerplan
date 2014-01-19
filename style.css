@@ -1,9 +1,10 @@
-
 body {
-	background: url(/imgs/lblue110.gif);
-	background-repeat: repeat; }
+	background: url(/imgs/Seattleport.jpg);
+	background-repeat: no-repeat;
+	background-size:cover }
 
-fieldset {background-color: white;}
+fieldset {background-color: white;
+ border-radius:15px; }
 
 input, textarea, button {
   width : 75px;
@@ -13,3 +14,6 @@ input, textarea, button {
      -moz-box-sizing: border-box; /* For all Gecko based browsers */
           box-sizing: border-box;
 }
+.intro
+{background-color: white;}
+:focus {background-color: lightyellow}
