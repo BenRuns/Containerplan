@@ -1,4 +1,19 @@
-
+#!/usr/bin/env python
+#
+# Copyright 2007 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 import os
 import re
 from string import letters
@@ -32,7 +47,7 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello world!')
 
-
+        ##########################################
 
 class LoadPlan(BaseHandler):
     formnames_num = ["weight","pcs","length","width","height"] 
@@ -50,7 +65,11 @@ class LoadPlan(BaseHandler):
     def get(self):
 
         self.render("Container.html",M3="",CFT="",pcs="",length="",width="",height="",weight="",
-            weightlb="",weightkg="",sel_measure="",sel_weight="",error_message="",sel_haz="",Weight="",hazardous="")
+            weightlb="",weightkg="",sel_measure="",sel_weight="",error_message="",sel_haz="",Weight="",hazardous="",dim="")
+    
+    def renderload(self,dict):#takes dictionary --or cookie ? and renders page- finish this
+        return
+
 
     def post(self): #if all the fields aren't entered in Container.html, an error message is returned. If not, this returns the cubic meters, cubic feet, weight in kilograms 
                     #weight in pounds,
@@ -94,8 +113,8 @@ class LoadPlan(BaseHandler):
                 
 
 
-        if complete :# better way of writing?
-        #needs a check digit option
+        if complete :# better way of writing? make sure to make this part of the replacement piece class
+        #needs a better  check digit option
 
 
             pcs = float(pcsdata["pcs"])
@@ -130,14 +149,26 @@ class LoadPlan(BaseHandler):
 
 
 
-            M3 =  CBM.Calc_M3(pcs,length,width,height)# in this class this should only be stored after valid options are entered
-            CFT =  CBM.Calc_CFT(pcs,length,width,height)
+            pcsdata["M3"] =  CBM.Calc_M3(pcs,length,width,height)# in this class this should only be stored after valid options are entered
+            pcsdata["CFT"] =  CBM.Calc_CFT(pcs,length,width,height)
+            pcsdata["DIM"]=  CBM.Calc_DIM(pcs,length,width,height) #dim weight for an international IATA shipment
+
+            # I want to make a cookie to pass here and have the formating of the number be on the 
 
         
-            self.render("Container.html", M3= "%.3f" % M3 +" Cubic Meters", CFT="%.2f" % CFT +" Cubic Feet", pcs=pcsdata["pcs"],length=pcsdata["length"],
+            self.render("Container.html", M3= "%.3f" % pcsdata["M3"] +" Cubic Meters", CFT="%.2f" % pcsdata["CFT"]+" Cubic Feet", pcs=pcsdata["pcs"],length=pcsdata["length"],
                         width=pcsdata["width"],height=pcsdata["height"], weight=pcsdata["weight"], weightlb="%.2f" % pcsdata["weightlb"] + " Pounds",
-                        weightkg="%.2f" % pcsdata["weightkg"] +" Kilograms",sel_measure=pcsdata["measure"],sel_weight=pcsdata["Weight_Type"],sel_haz=pcsdata["hazardous"])
+                        weightkg="%.2f" % pcsdata["weightkg"] +" Kilograms",sel_measure=pcsdata["measure"],sel_weight=pcsdata["Weight_Type"],
+                        sel_haz=pcsdata["hazardous"],dim= "%.0f" % pcsdata["DIM"] +" Kgs Dimensional Weight (IATA)",)
             
+            
+
+
+
+        else:# need a single reformater to handle this named reload, adds an incomplete cookie ... marked incomplete. Need away to highlight bad forms
+            self.render("Container.html", pcs= pcsdata["pcs"],length=pcsdata["length"],
+                        width=pcsdata["width"],height=pcsdata["height"], weight=pcsdata["weight"], sel_measure=pcsdata["measure"],sel_weight=pcsdata["Weight_Type"], error_message=error_message[:-1], sel_haz=pcsdata["hazardous"])
+
             
 
 
