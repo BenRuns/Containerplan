@@ -62,7 +62,7 @@
 			<td>
 	
 
-				<input type="number" step="any" name ="weight" value={{'%1.1f' % boxes.weight()}}>
+				<input type="number" step="any" name ="wt" value={{'%1.1f' % boxes.weight()}}>
 
 			</td>
 
@@ -97,15 +97,74 @@
 
 	<fieldset>
 		<ul id="output">
+			
 		
 
 			 <script type="text/javascript"> 
+
+			 var in_cm = function(number) {	
+			 	return number * 2.54;
+			 }
+			 var dims_m3 = function(dims) {
+			 	 //takes cm as input
+			 	return (dims[0] * dims[1] * dims[2] * dims[3])/ 1e6;
+			 }
+
+			 var lb_kgs = function(pounds){
+			 	return pounds * 0.45359237;
+			 }
+
+			 var dims = function(form){
+			 	//return array of dims
+			 	//[pieces, length, width, height, weight per pc]
+			 	var p, l, w, h, wt;
+			 	p = (form['P'].value)
+
+			 	if (form['metric'].value === "0") {
+			 		wt = lb_kgs(form['wt'].value)/p;
+			 		}
+			 	else
+			 		{ wt = form['wt'].value/p };
+
+			 	if (form['measure'].value === "0") {
+			 		l = in_cm(form['L'].value);
+			 		w = in_cm(form['W'].value);
+			 		h = in_cm(form['H'].value);
+			 		}
+			 	else
+			 		{l = (form['L'].value);
+			 		w = (form['W'].value);
+			 		h = (form['H'].value); };
+			  return [p, l , w, h, wt]
+
+			 };
+
+			 // var shipment = dims(document.forms['packages']);
+			 // var cubic_m = dims_m3(shipment);
+			 // var total_kgs = (shipment[0] * shipment[5]);
+			 // var total_lbs = total_kgs * 2.20461;
+			 // var cubic_ft = cubic_m * 35.315;
+			 // var dim_wt = (shipment[0] *  shipment[1] * shipment [2]* shipment[3])/366
+			 // var iata_chargeable = dim_wt > total_kgs ? dim_wt : total_kgs
+	
+
+
+
 			packages.elements.calculate.onclick = function() {
+				 var shipment = dims(document.forms['packages']);
+				 var cubic_m = dims_m3(shipment);
+				 var total_kgs = (shipment[0] * shipment[4]);
+				 var total_lbs = total_kgs * 2.20461;
+				 var cubic_ft = cubic_m * 35.315;
+				 var dim_wt = (shipment[0] *  shipment[1] * shipment [2]* shipment[3])/366
+				 var iata_chargeable = dim_wt > total_kgs ? dim_wt : total_kgs
+	
 			var output = document.getElementById("output");
-			var line = document.createElement("li");
-			var hello = document.createTextNode( (packages.elements.P.value * packages.elements.L.value * packages.elements.W.value * packages.elements.H.value)/ 1000000 );
-			line.appendChild(hello);
-			output.appendChild(line)
+			
+			var results =  "M3 = "+cubic_m +" Cubic Feet = "+cubic_ft +  " Total Kilograms = "+total_kgs +" Total Pounds = "+ total_lbs + " IATA Chargeable = " +iata_chargeable ;
+
+			output.innerHTML = results;
+		
 					}
 
 			</script>
