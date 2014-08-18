@@ -84,7 +84,7 @@
 		</td>
 
 		<td>
-			<button type ="button" name="calculate">Submit</button><!---need to add an add line buttone -->
+			<button type ="button" name="calculate">Calculate</button><!---need to add an add line buttone -->
 		</td>
 		</form>
 
@@ -139,29 +139,26 @@
 
 			 };
 
-			 // var shipment = dims(document.forms['packages']);
-			 // var cubic_m = dims_m3(shipment);
-			 // var total_kgs = (shipment[0] * shipment[5]);
-			 // var total_lbs = total_kgs * 2.20461;
-			 // var cubic_ft = cubic_m * 35.315;
-			 // var dim_wt = (shipment[0] *  shipment[1] * shipment [2]* shipment[3])/366
-			 // var iata_chargeable = dim_wt > total_kgs ? dim_wt : total_kgs
 	
 
 
 
 			packages.elements.calculate.onclick = function() {
 				 var shipment = dims(document.forms['packages']);
-				 var cubic_m = dims_m3(shipment);
-				 var total_kgs = (shipment[0] * shipment[4]);
-				 var total_lbs = total_kgs * 2.20461;
-				 var cubic_ft = cubic_m * 35.315;
-				 var dim_wt = (shipment[0] *  shipment[1] * shipment [2]* shipment[3])/366
+				 var cubic_m = dims_m3(shipment).toFixed(3);;
+				 var total_kgs = (shipment[0] * shipment[4]).toFixed(2);;
+				 var total_lbs = (total_kgs * 2.20461).toFixed(2);;
+				 var cubic_ft = (cubic_m * 35.315).toFixed(2);;
+				 var dim_wt = ((shipment[0] *  shipment[1] * shipment[2]* shipment[3])/6000).toFixed();
 				 var iata_chargeable = dim_wt > total_kgs ? dim_wt : total_kgs
 	
 			var output = document.getElementById("output");
 			
-			var results =  "M3 = "+cubic_m +" Cubic Feet = "+cubic_ft +  " Total Kilograms = "+total_kgs +" Total Pounds = "+ total_lbs + " IATA Chargeable = " +iata_chargeable ;
+			var results =  "<li> Cubic Meters = "+cubic_m +"</li>"
+						  +"<li> Cubic Feet = "+cubic_ft +"</li>"
+						  +"<li> Total Kilograms = "+total_kgs +"</li>"
+						  +"<li> Total Pounds = "+ total_lbs +"</li>"
+						  + "<li> IATA Chargeable = " +iata_chargeable +"</li>";
 
 			output.innerHTML = results;
 		
