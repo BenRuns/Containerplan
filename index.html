@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+<title> Freight Calculator  </title>
+
+
+</head>
+
+
+<body>
+
+
+	<table >
+
+
+		<thead>
+		
+		<th>Piece(s)</th>
+		<th>Length</th>
+		<th>Width</th>
+		<th>Height</th>
+		 
+		<th>Total Weight </th>
+
+		</thead>
+
+			
+			
+		<form id="packages" method="post" >
+		
+		<tr>
+			
+
+			<td>
+
+				<input type="number" name ="P" >
+
+			</td>
+			
+			<td>
+				
+				<input type="number" name ="L"  >
+			</td>
+
+			<td>
+
+				<input type="number" step="any" name ="W" >
+			</td>
+
+			<td>
+
+				<input type="number" step="any" name ="H" >
+
+			</td>
+  
+			
+
+			<td>
+	
+
+				<input type="number" step="any" name ="weight" value={{'%1.1f' % boxes.weight()}}>
+
+			</td>
+
+	
+		
+		<tr>
+		<td>
+			 <input type="radio" name="measure" value=0  {% if boxes.measure_type == "IN" %} checked {%endif%}> IN
+			 
+			 <input type="radio" name="measure" value=1 {% if boxes.measure_type == "CM" %} checked {%endif%}> CM
+			 
+		</td>
+
+		<td>
+			 <input type="radio" name="metric" value=0 {% if boxes.weight_type == "LBS" %} checked {%endif%}> LBS
+			 
+			 <input type="radio" name="metric" value=1  {% if boxes.weight_type == "KGS" %} checked {%endif%}> KGS
+			 
+		</td>
+
+		<td>
+			<button type ="button" name="calculate">Submit</button><!---need to add an add line buttone -->
+		</td>
+		</form>
+
+		</tr>
+		
+
+	</table>
+	</fieldset>
+
+
+	<fieldset>
+		<ul id="output">
+		
+
+			 <script type="text/javascript"> 
+			packages.elements.calculate.onclick = function() {
+			var output = document.getElementById("output");
+			var line = document.createElement("li");
+			var hello = document.createTextNode( (packages.elements.P.value * packages.elements.L.value * packages.elements.W.value * packages.elements.H.value)/ 1000000 );
+			line.appendChild(hello);
+			output.appendChild(line)
+					}
+
+			</script>
+
+		</ul>
+
+
+	</fieldset>
+	</tr>
+	
+	</div>
+
+</div>
+
+</body>
+
+</html>
+
+
